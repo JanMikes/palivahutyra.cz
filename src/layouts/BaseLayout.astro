@@ -57,6 +57,7 @@ const ogImage = `${siteUrl}/images/og-image.jpg`;
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="author" type="text/plain" href="/humans.txt" />
@@ -104,5 +105,13 @@ const ogImage = `${siteUrl}/images/og-image.jpg`;
   </head>
   <body>
     <slot />
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" is:inline></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof GLightbox !== 'undefined') {
+          GLightbox({ selector: '.glightbox' });
+        }
+      });
+    </script>
   </body>
 </html>
