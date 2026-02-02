@@ -1,0 +1,26 @@
+/* TEAM */
+
+Owner: Jakub Hutyra
+Company: Paliva Hutyra s.r.o.
+Location: Frýdek-Místek, Czech Republic
+Contact: info@palivahutyra.cz
+Phone: +420 733 708 172
+
+Developer: Jan Mikes
+Site: janmikes.cz
+Location: Czech Republic
+
+/* THANKS */
+
+Biomac - Official partner
+SD Bílina - Coal supplier
+
+/* SITE */
+
+Last update: 2025/02
+Language: Czech
+Standards: HTML5, CSS3
+Framework: Astro
+Styling: Tailwind CSS
+Fonts: Outfit, Inter, DM Serif Display (Google Fonts)
+IDE: Claude Code

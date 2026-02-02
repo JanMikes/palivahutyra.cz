@@ -4,32 +4,64 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  canonicalPath?: string;
 }
 
+const siteUrl = 'https://palivahutyra.cz';
 const {
   title,
-  description = "Prodej kvalitního palivového dřeva, uhlí a briket Biomac ve Frýdku-Místku. Osobní přístup, vlastní doprava. ☎ 733 708 172"
+  description = "Prodej kvalitního palivového dřeva, uhlí a briket Biomac ve Frýdku-Místku. Osobní přístup, vlastní doprava. ☎ 733 708 172",
+  canonicalPath = Astro.url.pathname
 } = Astro.props;
+
+const canonicalUrl = `${siteUrl}${canonicalPath === '/' ? '' : canonicalPath}`;
+const ogImage = `${siteUrl}/images/og-image.jpg`;
 ---
 
 <!DOCTYPE html>
 <html lang="cs">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD0HFQ482S" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JD0HFQ482S');
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="keywords" content="paliva, dřevo, uhlí, brikety, pelety, Frýdek-Místek, Biomac, palivové dřevo, topivo" />
 
+    <link rel="canonical" href={canonicalUrl} />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Paliva Hutyra" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="author" type="text/plain" href="/humans.txt" />
+    <meta name="theme-color" content="#1B4332" />
+    <meta name="apple-mobile-web-app-title" content="Paliva Hutyra" />
     <title>{title}</title>
 
     <script type="application/ld+json">
@@ -38,6 +70,9 @@ const {
         "@type": "LocalBusiness",
         "name": "Paliva Hutyra s.r.o.",
         "description": "Prodej palivového dřeva, uhlí, briket a pelet",
+        "url": "https://palivahutyra.cz",
+        "logo": "https://palivahutyra.cz/favicon.svg",
+        "image": "https://palivahutyra.cz/images/og-image.jpg",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "J. Švermy 486",
@@ -52,7 +87,18 @@ const {
           "@type": "GeoCoordinates",
           "latitude": "49.69367316925427",
           "longitude": "18.386314789494467"
-        }
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Frýdek-Místek"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Moravskoslezský kraj"
+          }
+        ],
+        "priceRange": "$$"
       }
     </script>
   </head>

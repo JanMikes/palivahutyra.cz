@@ -30,7 +30,7 @@ const prices = [
     small={true}
   />
 
-  <main class="section-padding bg-cream">
+  <main id="main-content" class="section-padding bg-cream">
     <div class="container-narrow mx-auto">
       <!-- Intro -->
       <div class="max-w-3xl mx-auto text-center mb-12">
@@ -173,4 +173,35 @@ const prices = [
 
   <ContactSection />
   <Footer />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Palivové dřevo - tvrdé dřevo",
+      "description": "Kvalitní tvrdé palivové dřevo (dub, habr, jasan). Suché, správně uskladněné, připravené k použití. Délky 25, 33, 40 nebo 50 cm.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Paliva Hutyra"
+      },
+      "image": "https://palivahutyra.cz/images/Drevo.jpg",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://palivahutyra.cz/drevo",
+        "priceCurrency": "CZK",
+        "price": "1300",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Paliva Hutyra s.r.o."
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "47"
+      }
+    }
+  </script>
 </BaseLayout>

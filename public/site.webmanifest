@@ -1,0 +1,18 @@
+{
+  "name": "Paliva Hutyra",
+  "short_name": "Paliva Hutyra",
+  "description": "Prodej palivového dřeva, uhlí a briket ve Frýdku-Místku",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF6E3",
+  "theme_color": "#1B4332",
+  "lang": "cs",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

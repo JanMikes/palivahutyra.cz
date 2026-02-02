@@ -15,6 +15,19 @@
     font-family: Outfit, system-ui, sans-serif;
     @apply font-semibold;
   }
+
+  /* Focus-visible styles for keyboard navigation */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-fire;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-fire rounded;
+  }
 }
 
 @layer components {
