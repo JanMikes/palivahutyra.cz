@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+  external?: boolean;
+}
+
+const { title, description, image, href, external = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class="card group block"
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+>
+  <div class="aspect-[4/3] overflow-hidden bg-cream">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      loading="lazy"
+    />
+  </div>
+  <div class="p-6">
+    <h3 class="text-xl font-heading font-semibold text-charcoal mb-2 group-hover:text-fire transition-colors">
+      {title}
+    </h3>
+    <p class="text-charcoal/70 mb-4">
+      {description}
+    </p>
+    <span class="inline-flex items-center text-fire font-medium group-hover:gap-2 transition-all">
+      Více info
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+      {external && (
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      )}
+    </span>
+  </div>
+</a>

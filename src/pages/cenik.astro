@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PriceTable from '../components/PriceTable.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+const woodPrices = [
+  {
+    product: 'Tvrdé dřevo (dub, habr, jasan)',
+    details: 'Délka 33, 40 nebo 50 cm',
+    price: '1 300 Kč',
+    unit: '/ PRMS'
+  }
+];
+
+const looseCoalPrices = [
+  {
+    product: 'Černý kostko-ořech / Černý ořech',
+    details: '25-90mm / 25-50mm, PL',
+    price: '900 Kč',
+    unit: '/ q'
+  },
+  {
+    product: 'Hnědý ořech II',
+    details: '10-20mm, SD-Bílina/CZ, 17.6 MJ/kg',
+    price: '620 Kč',
+    unit: '/ q',
+    sale: true
+  }
+];
+
+const baggedCoalPrices = [
+  {
+    product: 'Černé uhlí ekohrášek',
+    details: '25kg pytel, 8-25mm, PL',
+    price: '300 Kč',
+    unit: '/ pytel'
+  },
+  {
+    product: 'Hnědé uhlí ořech II',
+    details: '25kg pytel, 10-25mm, SD-Bílina/CZ',
+    price: '200 Kč',
+    unit: '/ pytel',
+    sale: true
+  }
+];
+---
+
+<BaseLayout
+  title="Ceník | Paliva Hutyra"
+  description="Aktuální ceník palivového dřeva, uhlí, briket a pelet. Paliva Hutyra Frýdek-Místek."
+>
+  <Header currentPage="/cenik" />
+
+  <Hero
+    title="Ceník paliv"
+    subtitle="Aktuální ceny platné pro rok 2025"
+    showPhone={false}
+    backgroundImage="/images/foto/obr5.jpg"
+    small={true}
+  />
+
+  <!-- Quick Navigation -->
+  <section class="bg-white sticky top-16 md:top-20 z-40 shadow-sm">
+    <div class="container-narrow mx-auto px-4">
+      <nav class="flex justify-center gap-2 md:gap-4 py-4 overflow-x-auto">
+        <a href="#drevo" class="px-4 py-2 rounded-full bg-forest text-white text-sm md:text-base font-medium hover:bg-forest-dark transition-colors whitespace-nowrap">Dřevo</a>
+        <a href="#uhli-volne" class="px-4 py-2 rounded-full bg-ash text-charcoal text-sm md:text-base font-medium hover:bg-gray-200 transition-colors whitespace-nowrap">Uhlí volné</a>
+        <a href="#uhli-pytlovane" class="px-4 py-2 rounded-full bg-ash text-charcoal text-sm md:text-base font-medium hover:bg-gray-200 transition-colors whitespace-nowrap">Uhlí pytlované</a>
+        <a href="#brikety" class="px-4 py-2 rounded-full bg-ash text-charcoal text-sm md:text-base font-medium hover:bg-gray-200 transition-colors whitespace-nowrap">Brikety</a>
+      </nav>
+    </div>
+  </section>
+
+  <main class="section-padding bg-cream">
+    <div class="container-narrow mx-auto space-y-12">
+      <!-- Wood Prices -->
+      <section id="drevo">
+        <h2 class="text-2xl md:text-3xl font-heading font-semibold text-charcoal mb-6">Palivové dřevo</h2>
+        <PriceTable
+          rows={woodPrices}
+          note="PRMS = Prostorový metr sypaný. Při délce 25 cm příplatek 200 Kč. Manipulační poplatek 100 Kč při menším odběru."
+        />
+        <div class="mt-4 p-4 bg-forest/10 rounded-lg">
+          <p class="text-charcoal/80">
+            <strong>Doprava zdarma:</strong> Při objednávce 8 PRMS do 15 km.
+            Kapacita kontejneru max. 8 PRMS.
+          </p>
+        </div>
+      </section>
+
+      <!-- Loose Coal Prices -->
+      <section id="uhli-volne">
+        <h2 class="text-2xl md:text-3xl font-heading font-semibold text-charcoal mb-6">Volně ložené uhlí</h2>
+        <PriceTable
+          rows={looseCoalPrices}
+          note="q = metrický cent (100 kg). Maximální náklad 50 q (5 tun) na kontejner."
+        />
+        <div class="mt-4 p-4 bg-amber/20 rounded-lg">
+          <p class="text-charcoal/80">
+            <strong>Hodiny vážení:</strong> Po-Čt 8:00-15:00, Pá 8:00-14:00, So 8:00-12:00
+          </p>
+        </div>
+      </section>
+
+      <!-- Bagged Coal Prices -->
+      <section id="uhli-pytlovane">
+        <h2 class="text-2xl md:text-3xl font-heading font-semibold text-charcoal mb-6">Pytlované uhlí</h2>
+        <PriceTable rows={baggedCoalPrices} />
+      </section>
+
+      <!-- Briquettes Info -->
+      <section id="brikety">
+        <h2 class="text-2xl md:text-3xl font-heading font-semibold text-charcoal mb-6">Brikety a pelety Biomac</h2>
+        <div class="bg-ash rounded-lg p-6 md:p-8">
+          <div class="flex items-center gap-4 mb-6">
+            <img src="/images/biomac.jpg" alt="Biomac" class="h-16 object-contain" />
+            <div>
+              <p class="font-semibold text-charcoal">Oficiální partner Biomac</p>
+              <p class="text-charcoal/70">Kompletní sortiment briket a pelet</p>
+            </div>
+          </div>
+          <p class="text-charcoal/80 mb-6">
+            Pro aktuální ceník produktů Biomac navštivte oficiální e-shop nebo nás kontaktujte.
+            U produktů Biomac přijímáme platbu kartou.
+          </p>
+          <a
+            href="https://eshop.biomac.cz/drevene-brikety-c293672683831300"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary inline-flex items-center gap-2"
+          >
+            Zobrazit produkty Biomac
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- General Note -->
+      <section class="bg-white rounded-lg p-6 border border-gray-200">
+        <h3 class="font-semibold text-charcoal mb-3">Důležité informace</h3>
+        <ul class="text-charcoal/70 space-y-2 text-sm">
+          <li>• Všechny ceny jsou uvedeny včetně DPH 21%.</li>
+          <li>• Ceny uhlí zahrnují daň z pevných paliv dle zákona 261/2007 Sb.</li>
+          <li>• Objednávky přijímáme telefonicky nebo e-mailem.</li>
+          <li>• Ceny platné od 1. 1. 2025, vyhrazujeme si právo změny.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

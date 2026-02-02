@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PriceTable from '../components/PriceTable.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+const prices = [
+  {
+    product: 'Tvrdé dřevo (dub, habr, jasan)',
+    details: 'Délka 33, 40 nebo 50 cm',
+    price: '1 300 Kč',
+    unit: '/ PRMS'
+  }
+];
+---
+
+<BaseLayout
+  title="Palivové dřevo | Paliva Hutyra"
+  description="Prodej kvalitního palivového dřeva ve Frýdku-Místku. Tvrdé dřevo - dub, habr, jasan. Doprava zdarma při větším odběru."
+>
+  <Header currentPage="/drevo" />
+
+  <Hero
+    title="Palivové dřevo"
+    subtitle="Přírodní teplo z kvalitního dřeva"
+    showPhone={false}
+    backgroundImage="/images/foto/obr5.jpg"
+    small={true}
+  />
+
+  <main class="section-padding bg-cream">
+    <div class="container-narrow mx-auto">
+      <!-- Intro -->
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p class="text-lg text-charcoal/80 leading-relaxed">
+          Nabízíme kvalitní tvrdé palivové dřevo od lokálních dodavatelů.
+          Dřevo je správně uskladněné, suché a připravené hřát váš domov.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left Column - Info -->
+        <div class="space-y-8">
+          <!-- Wood Types -->
+          <section class="bg-ash rounded-lg p-6">
+            <h2 class="text-xl font-heading font-semibold text-charcoal mb-4">Druhy dřeva</h2>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-wood/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-wood" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22v-7"></path>
+                    <path d="M17.5 22H6.5"></path>
+                    <path d="M6 18a6 6 0 0 1 .2-1.5"></path>
+                    <circle cx="12" cy="8" r="6"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-charcoal">Dub</h3>
+                  <p class="text-charcoal/70 text-sm">Vysoká výhřevnost, dlouhé hoření, krásné uhlíky</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-wood/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-wood" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22v-7"></path>
+                    <path d="M17.5 22H6.5"></path>
+                    <path d="M6 18a6 6 0 0 1 .2-1.5"></path>
+                    <circle cx="12" cy="8" r="6"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-charcoal">Habr</h3>
+                  <p class="text-charcoal/70 text-sm">Nejtvrdší dřevo, vynikající výhřevnost</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-wood/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-wood" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22v-7"></path>
+                    <path d="M17.5 22H6.5"></path>
+                    <path d="M6 18a6 6 0 0 1 .2-1.5"></path>
+                    <circle cx="12" cy="8" r="6"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-charcoal">Jasan</h3>
+                  <p class="text-charcoal/70 text-sm">Rovnoměrné hoření, nízká tvorba jisker</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Available Lengths -->
+          <section class="bg-ash rounded-lg p-6">
+            <h2 class="text-xl font-heading font-semibold text-charcoal mb-4">Dostupné délky</h2>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-white rounded-lg text-charcoal font-medium">25 cm*</span>
+              <span class="px-4 py-2 bg-white rounded-lg text-charcoal font-medium">33 cm</span>
+              <span class="px-4 py-2 bg-white rounded-lg text-charcoal font-medium">40 cm</span>
+              <span class="px-4 py-2 bg-white rounded-lg text-charcoal font-medium">50 cm</span>
+            </div>
+            <p class="text-charcoal/70 text-sm mt-3">* Délka 25 cm za příplatek 200 Kč</p>
+          </section>
+
+          <!-- Delivery Info -->
+          <section class="bg-forest text-white rounded-lg p-6">
+            <h2 class="text-xl font-heading font-semibold mb-4">Doprava</h2>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span><strong>Zdarma</strong> při odběru 8 PRMS do 15 km</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Kapacita kontejneru: max <strong>8 PRMS</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Vlastní doprava – dovezeme kam potřebujete</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <!-- Right Column - Price & Image -->
+        <div class="space-y-8">
+          <!-- Price Table -->
+          <PriceTable
+            title="Ceník dřeva"
+            rows={prices}
+            note="PRMS = Prostorový metr sypaný. Manipulační poplatek 100 Kč při menším odběru. Ceny včetně DPH."
+          />
+
+          <!-- Product Image -->
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/images/Drevo.jpg"
+              alt="Palivové dřevo"
+              class="w-full"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- CTA -->
+          <div class="text-center">
+            <a href="tel:+420733708172" class="btn-primary text-lg px-8 py-4 w-full md:w-auto">
+              Objednat dřevo: 733 708 172
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <section class="mt-16">
+        <h2 class="text-2xl font-heading font-semibold text-charcoal mb-6 text-center">Naše dřevo</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img src="/images/foto/obr5.jpg" alt="Štípané dřevo" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+          <img src="/images/foto/obr4.jpg" alt="Sklad dřeva" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+          <img src="/images/foto/obr2.jpg" alt="Dřevo připravené k prodeji" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+          <img src="/images/foto/obr8.jpg" alt="Naložené dřevo" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

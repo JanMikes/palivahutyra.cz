@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PriceTable from '../components/PriceTable.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+const looseCoalPrices = [
+  {
+    product: 'Černý kostko-ořech / Černý ořech',
+    details: '25-90mm / 25-50mm, PL',
+    price: '900 Kč',
+    unit: '/ q'
+  },
+  {
+    product: 'Hnědý ořech II',
+    details: '10-20mm, SD-Bílina/CZ, 17.6 MJ/kg',
+    price: '620 Kč',
+    unit: '/ q',
+    sale: true
+  }
+];
+
+const baggedCoalPrices = [
+  {
+    product: 'Černé uhlí ekohrášek',
+    details: '25kg pytel, 8-25mm, PL',
+    price: '300 Kč',
+    unit: '/ pytel'
+  },
+  {
+    product: 'Hnědé uhlí ořech II',
+    details: '25kg pytel, 10-25mm, SD-Bílina/CZ',
+    price: '200 Kč',
+    unit: '/ pytel',
+    sale: true
+  }
+];
+---
+
+<BaseLayout
+  title="Uhlí | Paliva Hutyra"
+  description="Prodej černého a hnědého uhlí ve Frýdku-Místku. Volně ložené i pytlované. Dodavatel SD Bílina."
+>
+  <Header currentPage="/uhli" />
+
+  <Hero
+    title="Uhlí"
+    subtitle="Tradiční palivo s vysokou výhřevností"
+    showPhone={false}
+    backgroundImage="/images/foto/obr3.jpg"
+    small={true}
+  />
+
+  <main class="section-padding bg-cream">
+    <div class="container-narrow mx-auto">
+      <!-- Intro -->
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <p class="text-lg text-charcoal/80 leading-relaxed">
+          Nabízíme černé i hnědé uhlí od prověřených dodavatelů.
+          Volně ložené s přesným vážením nebo pohodlně v pytlích – jak vám to vyhovuje.
+        </p>
+      </div>
+
+      <!-- Supplier Badge -->
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex items-center gap-4 bg-ash rounded-full px-6 py-3">
+          <img src="/images/znamka.jpg" alt="SD Bílínské uhlí" class="h-10 object-contain" />
+          <span class="text-charcoal font-medium">Dodavatel SD Bílina</span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Loose Coal -->
+        <section>
+          <h2 class="text-2xl font-heading font-semibold text-charcoal mb-6">Volně ložené uhlí</h2>
+          <PriceTable
+            rows={looseCoalPrices}
+            note="q = metrický cent (100 kg). Maximální náklad 50 q (5 tun) na kontejner."
+          />
+
+          <!-- Weighing Hours -->
+          <div class="mt-6 bg-forest text-white rounded-lg p-6">
+            <h3 class="font-semibold mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Hodiny vážení
+            </h3>
+            <div class="space-y-2">
+              <div class="flex justify-between">
+                <span>Pondělí - Čtvrtek</span>
+                <span class="font-semibold">8:00 - 15:00</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Pátek</span>
+                <span class="font-semibold">8:00 - 14:00</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Sobota</span>
+                <span class="font-semibold">8:00 - 12:00</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bagged Coal -->
+        <section>
+          <h2 class="text-2xl font-heading font-semibold text-charcoal mb-6">Pytlované uhlí</h2>
+          <PriceTable
+            rows={baggedCoalPrices}
+          />
+
+          <!-- Benefits -->
+          <div class="mt-6 bg-ash rounded-lg p-6">
+            <h3 class="font-semibold text-charcoal mb-4">Výhody pytlovaného uhlí</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-forest flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span class="text-charcoal/80">Snadná manipulace a skladování</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-forest flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span class="text-charcoal/80">Čistší přeprava</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-forest flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span class="text-charcoal/80">Ideální pro menší odběry</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-forest flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span class="text-charcoal/80">Přesná hmotnost 25 kg</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Tax Note -->
+      <section class="mt-12 bg-amber/20 rounded-lg p-6 border border-amber/30">
+        <div class="flex items-start gap-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div>
+            <h3 class="font-semibold text-charcoal mb-2">Informace o daních</h3>
+            <p class="text-charcoal/80 text-sm">
+              Ceny zahrnují daň z pevných paliv dle zákona 261/2007 Sb. DPH činí 21%.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="mt-12 text-center">
+        <p class="text-charcoal/70 mb-4">Potřebujete poradit s výběrem?</p>
+        <a href="tel:+420733708172" class="btn-primary text-lg px-8 py-4">
+          Zavolejte nám: 733 708 172
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <ContactSection />
+  <Footer />
+</BaseLayout>

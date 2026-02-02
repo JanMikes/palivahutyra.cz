@@ -1,0 +1,82 @@
+---
+interface PriceRow {
+  product: string;
+  details?: string;
+  price: string;
+  unit?: string;
+  sale?: boolean;
+}
+
+interface Props {
+  title?: string;
+  rows: PriceRow[];
+  note?: string;
+}
+
+const { title, rows, note } = Astro.props;
+---
+
+<div class="bg-ash rounded-lg overflow-hidden">
+  {title && (
+    <div class="bg-forest text-white px-6 py-4">
+      <h3 class="text-xl font-heading font-semibold">{title}</h3>
+    </div>
+  )}
+
+  <!-- Desktop Table -->
+  <div class="hidden md:block">
+    <table class="w-full">
+      <thead>
+        <tr class="bg-forest/10 text-charcoal">
+          <th class="px-6 py-4 text-left font-semibold">Produkt</th>
+          <th class="px-6 py-4 text-left font-semibold">Specifikace</th>
+          <th class="px-6 py-4 text-right font-semibold">Cena</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, index) => (
+          <tr class={`border-b border-gray-200 last:border-0 ${index % 2 === 1 ? 'bg-white/50' : ''}`}>
+            <td class="px-6 py-4">
+              <div class="flex items-center gap-2">
+                {row.sale && <span class="price-badge">Akce</span>}
+                <span class={`font-medium ${row.sale ? 'text-ember' : 'text-charcoal'}`}>{row.product}</span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-charcoal/70">{row.details || '—'}</td>
+            <td class="px-6 py-4 text-right">
+              <span class={`font-bold text-lg ${row.sale ? 'text-ember' : 'text-charcoal'}`}>{row.price}</span>
+              {row.unit && <span class="text-charcoal/70 text-sm ml-1">{row.unit}</span>}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mobile Cards -->
+  <div class="md:hidden divide-y divide-gray-200">
+    {rows.map((row) => (
+      <div class="p-4">
+        <div class="flex items-start justify-between mb-2">
+          <div class="flex items-center gap-2">
+            {row.sale && <span class="price-badge">Akce</span>}
+            <span class={`font-medium ${row.sale ? 'text-ember' : 'text-charcoal'}`}>{row.product}</span>
+          </div>
+        </div>
+        {row.details && (
+          <p class="text-charcoal/70 text-sm mb-2">{row.details}</p>
+        )}
+        <div class="text-right">
+          <span class={`font-bold text-lg ${row.sale ? 'text-ember' : 'text-charcoal'}`}>{row.price}</span>
+          {row.unit && <span class="text-charcoal/70 text-sm ml-1">{row.unit}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {note && (
+    <div class="px-6 py-4 bg-amber/20 border-t border-amber/30">
+      <p class="text-sm text-charcoal/80">{note}</p>
+    </div>
+  )}
+</div>

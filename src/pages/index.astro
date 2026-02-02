@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ProductCard from '../components/ProductCard.astro';
+import USPBlock from '../components/USPBlock.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Map from '../components/Map.astro';
+import Footer from '../components/Footer.astro';
+
+const products = [
+  {
+    title: 'Palivové dřevo',
+    description: 'Tvrdé dřevo – dub, habr, jasan. Suché a připravené hřát váš domov.',
+    image: '/images/Drevo.jpg',
+    href: '/drevo'
+  },
+  {
+    title: 'Uhlí',
+    description: 'Černé i hnědé uhlí od prověřených dodavatelů. Volně ložené nebo v pytlích.',
+    image: '/images/foto/obr3.jpg',
+    href: '/uhli'
+  },
+  {
+    title: 'Brikety a pelety',
+    description: 'Prémiové produkty Biomac. Ekologické topení s maximální účinností.',
+    image: '/images/foto/obr6.jpg',
+    href: '/brikety'
+  }
+];
+
+const usps = [
+  {
+    icon: 'personal',
+    title: 'Osobní přístup',
+    description: 'Nejsme call centrum. Poradíme vám osobně a srozumitelně.'
+  },
+  {
+    icon: 'delivery',
+    title: 'Vlastní doprava',
+    description: 'Dovezeme kam potřebujete, kdy potřebujete.'
+  },
+  {
+    icon: 'quality',
+    title: 'Ověřená kvalita',
+    description: 'Oficiální partner Biomac, dodavatel SD Bílina.'
+  },
+  {
+    icon: 'price',
+    title: 'Férové ceny',
+    description: 'Přesné vážení, transparentní ceny včetně DPH.'
+  },
+  {
+    icon: 'local',
+    title: 'Místní firma',
+    description: 'Známe region, známe vaše potřeby.'
+  },
+  {
+    icon: 'card',
+    title: 'Platba kartou',
+    description: 'U produktů Biomac přijímáme platební karty.'
+  }
+];
+---
+
+<BaseLayout title="Paliva Hutyra | Dřevo, uhlí, brikety Frýdek-Místek">
+  <Header currentPage="/" />
+
+  <!-- Hero -->
+  <Hero />
+
+  <!-- Trust Bar -->
+  <TrustBar />
+
+  <!-- Products Section -->
+  <section class="section-padding bg-cream">
+    <div class="container-narrow mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">Náš sortiment</h2>
+        <p class="text-charcoal/70 text-lg max-w-2xl mx-auto">
+          Vše pro teplo vašeho domova – od kvalitního dřeva po moderní ekologická paliva
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {products.map(product => (
+          <ProductCard {...product} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section-padding bg-ash">
+    <div class="container-narrow mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">Proč nakoupit u nás?</h2>
+        <p class="text-charcoal/70 text-lg max-w-2xl mx-auto">
+          Kvalita a individuální přístup jsou naše přednosti
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+        {usps.map(usp => (
+          <USPBlock {...usp} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section-padding bg-cream">
+    <div class="container-narrow mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <img
+            src="/images/foto/obr1.jpg"
+            alt="Areál Paliva Hutyra"
+            class="rounded-lg shadow-lg w-full"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 md:order-2">
+          <h2 class="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-6">O nás</h2>
+          <p class="text-charcoal/80 text-lg mb-6 leading-relaxed">
+            Jsme rodinná firma z Frýdku-Místku s dlouholetou tradicí v prodeji paliv.
+            Specializujeme se na kvalitní dřevo, uhlí, brikety a pelety.
+          </p>
+          <p class="text-charcoal/80 text-lg mb-6 leading-relaxed">
+            Jako oficiální partner Biomac vám garantujeme prvotřídní produkty a osobní přístup.
+            Poradíme, vysvětlíme, dovezeme.
+          </p>
+          <blockquote class="border-l-4 border-ember pl-4 italic text-charcoal/70">
+            „Kvalita a individuální přístup jsou naše přednosti, vždy se vám pokusíme vstřícně poradit a vysvětlit."
+            <footer class="mt-2 not-italic font-medium text-charcoal">— Jakub Hutyra</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="section-padding bg-ash">
+    <div class="container-narrow mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-heading font-semibold text-charcoal mb-4">Naše provozovna</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="/images/foto/obr2.jpg" alt="Sklad dřeva" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+        <img src="/images/foto/obr4.jpg" alt="Příprava dřeva" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+        <img src="/images/foto/obr7.jpg" alt="Naše kontejnery" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+        <img src="/images/foto/obr9.jpg" alt="Areál v zimě" class="rounded-lg shadow-md aspect-square object-cover" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <ContactSection />
+
+  <!-- Map -->
+  <Map />
+
+  <!-- Footer -->
+  <Footer />
+</BaseLayout>

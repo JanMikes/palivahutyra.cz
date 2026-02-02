@@ -1,0 +1,113 @@
+---
+
+---
+
+<section class="h-80 md:h-96 relative">
+  <div id="map" class="w-full h-full"></div>
+</section>
+
+<!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<!-- Leaflet JS -->
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Coordinates for Paliva Hutyra
+    const lat = 49.69367316925427;
+    const lng = 18.386314789494467;
+
+    // Initialize map
+    const map = L.map('map', {
+      scrollWheelZoom: false
+    }).setView([lat, lng], 16);
+
+    // CartoDB Voyager - clean style with natural green tones
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(map);
+
+    // Custom forest green marker
+    const forestIcon = L.divIcon({
+      className: 'custom-marker',
+      html: `
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="42" viewBox="0 0 32 42">
+          <path d="M16 0C7.163 0 0 7.163 0 16c0 11.25 16 26 16 26s16-14.75 16-26C32 7.163 24.837 0 16 0z" fill="#1B4332"/>
+          <circle cx="16" cy="14" r="6" fill="#FDF6E3"/>
+        </svg>
+      `,
+      iconSize: [32, 42],
+      iconAnchor: [16, 42],
+      popupAnchor: [0, -42]
+    });
+
+    // Add marker
+    const marker = L.marker([lat, lng], { icon: forestIcon }).addTo(map);
+
+    // Popup content
+    const popupContent = `
+      <div style="text-align: center; font-family: system-ui, sans-serif;">
+        <strong style="color: #1B4332; font-size: 14px;">Paliva Hutyra</strong><br>
+        <span style="color: #4a5568; font-size: 12px;">J. Švermy 486<br>738 01 Frýdek-Místek</span><br>
+        <a href="https://maps.google.com/?q=${lat},${lng}"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="color: #1B4332; font-size: 12px; text-decoration: underline;">
+          Otevřít v Google Maps →
+        </a>
+      </div>
+    `;
+
+    marker.bindPopup(popupContent);
+
+    // Enable scroll zoom on click
+    map.on('click', function() {
+      map.scrollWheelZoom.enable();
+    });
+  });
+</script>
+
+<style is:global>
+  #map {
+    z-index: 0;
+  }
+
+  /* Apply green tint to map tiles */
+  #map .leaflet-tile-pane {
+    filter: sepia(15%) hue-rotate(60deg) saturate(110%);
+  }
+
+  /* Style the custom marker */
+  .custom-marker {
+    background: none;
+    border: none;
+  }
+
+  /* Popup styling */
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .leaflet-popup-tip {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Attribution styling */
+  .leaflet-control-attribution {
+    background: rgba(253, 246, 227, 0.9) !important;
+    font-size: 10px;
+  }
+
+  .leaflet-control-attribution a {
+    color: #1B4332 !important;
+  }
+</style>
