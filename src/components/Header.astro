@@ -20,7 +20,7 @@ const navLinks = [
 </a>
 
 <!-- Closure announcement banner -->
-<div id="announcement-bar" class="fixed top-0 left-0 right-0 z-50 bg-ember text-white text-center py-2 px-4 text-sm md:text-base font-medium">
+<div id="announcement-bar" class="fixed top-0 left-0 right-0 z-50 h-[var(--banner-h)] flex items-center justify-center bg-ember text-white text-center px-4 text-sm md:text-base font-medium">
   <span class="inline-flex items-center gap-1.5">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="10"></circle>
@@ -31,7 +31,7 @@ const navLinks = [
   </span>
 </div>
 
-<header id="header" class="fixed top-[36px] left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300">
+<header id="header" class="fixed top-[var(--banner-h)] left-0 right-0 z-50 bg-white/95 backdrop-blur-sm transition-shadow duration-300">
   <div class="container-narrow mx-auto">
     <div class="flex items-center justify-between h-16 md:h-20 px-4">
       <!-- Logo -->

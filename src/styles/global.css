@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Výška oznamovacího pruhu v hlavičce. Když je pruh skrytý, nastav 0px. */
+    --banner-h: 36px;
+  }
+
   html {
     scroll-behavior: smooth;
   }
